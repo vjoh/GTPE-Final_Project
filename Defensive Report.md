@@ -4,8 +4,6 @@
 - Network Topology
 - Description of Targets
 - Monitoring the Targets
-- Patterns of Traffic & Behavior
-- Suggestions for Going Further
 
 ### Network Topology
 
