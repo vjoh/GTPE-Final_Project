@@ -56,7 +56,7 @@ HTTP Request Size Monitor is implemented as follows:
   - **Reliability**: High reliability
 
 #### CPU Usage Monitor
-CPU Usage Monitor is imple:
+CPU Usage Monitor is implemented as follows:
   - **Metric**: Monitors the total amount of CPU in use.
   - **Threshold**: Alert is triggered when 50% or more of the total CPU system resources are in use.
   - **Vulnerability Mitigated**: Resource hogging by cryptomining bots or other malicious programs that are CPU-intensive.
