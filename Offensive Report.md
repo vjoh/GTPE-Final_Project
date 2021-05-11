@@ -29,7 +29,7 @@ The following vulnerabilities were identified on Target 1:
   - Critical
   - Vulnerabilities
 
-![Nikto](\Images\nikto1.png)
+![Nikto](/Images/nikto1.png)
 
 
 ### Exploitation
