@@ -25,9 +25,6 @@ Nikto was used to conduct a basic vulnerability scan against 192.168.1.110 and f
 While OSVDB is no longer supported, the signatures can be cross checked with ![https://cve.mitre.org/data/refs/refmap/source-OSVDB.html](https://cve.mitre.org/data/refs/refmap/source-OSVDB.html).
 
 The following vulnerabilities were identified on Target 1:
-  - List of
-  - Critical
-  - Vulnerabilities
 
 ![Nikto](/Images/nikto1.png)
 
@@ -65,14 +62,14 @@ Hydra was used to uncover Michael's password, which was **michael**.
 
 ![](/Images/SSHTarget1.png)
 
-Flag 1: 
+**Flag 1:**
 Found flag 1 in the html code for http://192.168.1.110/service.html
 
 ![](/Images/dirbuster.png)
 
 ![](/Images/flag1.png)
 
-Flag 2:
+**Flag 2:**
 Found flag 2 by digging through the file path for /var/www/ which hosts the source code for the website at 192.168.1.110
 
 ![](/Images/flag2.png)
@@ -81,39 +78,41 @@ Found flag 2 by digging through the file path for /var/www/ which hosts the sour
      - While looking for additional information, a config file called `wp-config.php` was found in `/var/www/html`. This contained credentials for a wordpress database.
 ![](/Images/db_creds.png)
 
-During exploring the tables, flag 3 and 4 were found by dumping the `wp_posts` table.
-Commands to access the flags are 
+**Flag 3 and 4:**
+While exploring the database tables, flag 3 and 4 were found by dumping the `wp_posts` table.
+Commands to access the flags occurred in the following sequence:
+  ```bash
+  show tables;
+  select * from wp_posts; 
+  ```
 
 ![](/Images/flag3.png)
 ![](/Images/flag4.png)
 
-6. Use the credentials to log into MySQL and dump WordPress user password hashes.
+6. Used the credentials to log into MySQL and dump WordPress user password hashes.
+
+```bash
+show tables;
+select * from wp_users;
+```
+![](/Images/wp_tables.png)
+![](/Images/wp_users.png)
 
 7. Crack password hashes with `john`.
-     - **Hint**: Start by creating a wp_hashes.txt with Steven and Michael's hashes, formatted as follows
 
-      ```bash
-      user1:$P$hashvalu3
-      user2:$P$hashvalu3
-      ```
+We see there is a hashed value for Steven's credentials. Using it with John the Ripper, we were able to determine the value of Steven's password as **pink84**.
 
 8. Secure a user shell as the user whose password you cracked.
 
+![](/Images/stevensudo.png)
+
 9. Escalate to `root`. One flag can be discovered after this step.
-    - **Hint**:  Check sudo privileges. Is there a python command you can use to escalate to sudo?
+Utilizing the fact that the user steven can run python as root, we were able to conduct privilege escalation. The 4th flag was also found here.
+
+![](/Images/root.png)
 
 
 
 
-_TODO: Fill out the details below. Include screenshots where possible._
 
-The Red Team was able to penetrate `Target 1` and retrieve the following confidential data:
-- Target 1
-  - `flag1.txt`: _TODO: Insert `flag1.txt` hash value_
-    - **Exploit Used**
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_
-  - `flag2.txt`: _TODO: Insert `flag2.txt` hash value_
-    - **Exploit Used**
-      - _TODO: Identify the exploit used_
-      - _TODO: Include the command run_sudo
+
