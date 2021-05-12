@@ -82,6 +82,8 @@ Found flag 2 by digging through the file path for /var/www/ which hosts the sour
 While exploring the database tables, flag 3 and 4 were found by dumping the `wp_posts` table.
 Commands to access the flags occurred in the following sequence:
   ```bash
+  show datatables;
+  use wordpress;
   show tables;
   select * from wp_posts; 
   ```
