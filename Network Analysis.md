@@ -29,9 +29,10 @@ The Security team received reports of an infected Windows host on the network. T
 
 Inspect your traffic to answer the following questions:
   1. Find the following information about the infected Windows machine:
-    - **Host name: ROTTERDAM-PC**
-    - **IP address: 172.16.4.205**
-    - **MAC address: 00:59:07:b0:63:a4**
+    
+   - Host name: ROTTERDAM-PC
+   - IP address: 172.16.4.205
+   - MAC address: 00:59:07:b0:63:a4
     
   2. What is the username of the Windows user whose computer is infected? `Matthijs.devries`
  
@@ -45,13 +46,18 @@ IT was informed that some users are torrenting on the network. The Security team
 IT shared the following about the torrent activity:
 
   - The machines using torrents live in the range 10.0.0.0/24 and are clients of an AD domain.
+  
   - The DC of this domain lives at 10.0.0.2 and is named DogOfTheYear-DC.
+  
   - The DC is associated with the domain dogoftheyear.net.
 
 Your task is to isolate torrent traffic and answer the following questions:
 1. Find the following information about the machine with IP address 10.0.0.201:
+
   - MAC address: 00:16:17:18:66:c8
+
   - Windows username: blanco
+
   - OS version: Windows 65535
 
 2. Which torrent file did the user download?
